@@ -3,6 +3,8 @@ package io.zipcoder.pets;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Collections;
+
 /**
  * filename:
  * project: Interfaces
@@ -11,56 +13,56 @@ import org.junit.Test;
  */
 public class PetTest {
     @Test
+    public void testCompareSamePetTypeSameName() {
+        Pet dog1 = new Dog("Charlie");
+        Pet dog2 = new Dog("Charlie");
+
+        int expected = 0;
+        int actual = dog1.compareTo(dog2);
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void testCompareDiffPetTypePositive() {
-        Pet dog = new Dog();
-        Pet cat = new Cat();
+        Pet dog = new Dog("Charlie");
+        Pet cat = new Cat("Sylvester");
 
         int expected = 1;
-        int actual = cat.compareTo(dog);
+        int actual = dog.compareTo(cat);
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testCompareDiffPetTypeNegative() {
-        Pet Bugs = new Rabbit();
-        Pet Sylvester = new Cat();
+        Pet rabbit = new Rabbit("Bugs");          //type 1
+        Pet cat = new Cat("Sylvester");   //type 2
 
         int expected = -1;
-        int actual = Bugs.compareTo(Sylvester);
+        int actual = cat.compareTo(rabbit);
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testCompareSamePetTypeDiffNamePositive() {
-        Pet first = new Dog("Abbey");
-        Pet second = new Dog("Ziggy");
+        Pet first = new Dog("Charlie");
+        Pet second = new Dog("Kylie");
 
         int expected = 1;
         int actual = first.compareTo(second);
-
+//        Collections.sort(listName);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testCompareSamePetTypeDiffNameNegative() {
-        Pet second = new Dog("Zulu");
-        Pet first = new Dog("Arnold");
+        Pet first = new Dog("Charlie");
+        Pet second = new Dog("Kylie");
 
         int expected = -1;
         int actual = second.compareTo(first);
-
-        Assert.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testCompareSamePetTypeSameName() {
-        Pet dog1 = new Dog("Dan");
-        Pet dog2 = new Dog("Dan");
-
-        int expected = 0;
-        int actual = dog1.compareTo(dog2);
 
         Assert.assertEquals(expected, actual);
     }

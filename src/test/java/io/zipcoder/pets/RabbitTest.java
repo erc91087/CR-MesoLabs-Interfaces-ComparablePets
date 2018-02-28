@@ -6,8 +6,8 @@ import org.junit.Test;
 public class RabbitTest {
     @Test
     public void testUhhhRabbitSoundsIDK() {
-        Pet rabbit = new Rabbit();
-        rabbit.setName("Bugs");
+        Pet rabbit = new Rabbit("bugs");
+
         String expected = "What's up, Doc?";
         String actual = rabbit.speak();
 

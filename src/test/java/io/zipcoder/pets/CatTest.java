@@ -7,7 +7,7 @@ public class CatTest {
 
     @Test
     public void testMeow() {
-        Pet cat = new Cat();
+        Pet cat = new Cat("Whiskers");
         String expected = "Meow";
         String actual = cat.speak();
 
